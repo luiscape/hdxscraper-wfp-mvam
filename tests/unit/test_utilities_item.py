@@ -6,7 +6,7 @@ Unit tests for the item() utility function.
 '''
 import unittest
 
-from scraper.utilities.item import item
+from collector.utilities.item import item
 
 class TestUtilityItem(unittest.TestCase):
   '''
