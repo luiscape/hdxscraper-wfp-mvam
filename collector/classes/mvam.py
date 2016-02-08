@@ -43,7 +43,7 @@ class mVAM:
         results = []
         if statement:
             for page in range(0, self.page_limit):
-                print('%s Collecting page %s' % (item('bullet'), page) )
+                print('%s Collecting %s page %s' % (item('bullet'), self.table, page) )
                 r = requests.post(self.metadata['url'], data = {'table': self.table, 'where': statement, 'page': page })
                 if len(r.json()) == 0:
                     break
@@ -52,7 +52,7 @@ class mVAM:
 
         else:
             for page in range(0, self.page_limit):
-                print('%s Collecting page %s' % (item('bullet'), page) )
+                print('%s Collecting %s page %s' % (item('bullet'), self.table, page) )
                 r = requests.post(self.metadata['url'], data = {'table': self.table, 'page': page })
                 if len(r.json()) == 0:
                     break
