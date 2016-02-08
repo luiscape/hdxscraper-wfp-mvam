@@ -14,7 +14,7 @@ setup:
 	bash bin/setup.sh;
 
 collect:
-	bash bin/run.sh;
+	bash bin/collect.sh;
 
 test:
 	bash bin/test.sh;
