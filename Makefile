@@ -13,7 +13,7 @@
 setup:
 	bash bin/setup.sh;
 
-run:
+collect:
 	bash bin/run.sh;
 
 test:
