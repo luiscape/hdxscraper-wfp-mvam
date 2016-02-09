@@ -18,7 +18,7 @@ class mVAM:
     mVAM class; represents the organization's public API.
 
     '''
-    def __init__(self, table='pblStatsSum', page_limit = 10**3):
+    def __init__(self, table='pblStatsSum', page_limit = 10*4):
         self.tables = ['pblStatsSum', 'pblStatsSum4Maps']
         if table not in self.tables:
             raise ValueError('Table %s does not exist.')
@@ -59,7 +59,5 @@ class mVAM:
                 else:
                     results += r.json()
 
-
         self.metadata['records'] = len(results)
         return(results)
-

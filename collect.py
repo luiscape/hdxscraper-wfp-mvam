@@ -10,6 +10,7 @@ data, storing the results in local CSV files.
 '''
 import scraperwiki
 
+from collector.parser import parse
 from collector.classes.mvam import mVAM
 from collector.utilities.item import item
 from collector.storage.csv import store_csv
@@ -23,9 +24,14 @@ def main():
     tables = ['pblStatsSum', 'pblStatsSum4Maps']
     for t in tables:
         m = mVAM(table=t)
+
+        output = []
         records = m.query()
-        store_csv(data=records, path='%s.csv' % t)
-        store_sqlite(data=records, table=t)
+        for record in records:
+            output.append(parse(record))
+
+        store_csv(data=output, path='%s.csv' % t)
+        store_sqlite(data=output, table=t)
 
 if __name__ == '__main__':
   try:
@@ -35,4 +41,5 @@ if __name__ == '__main__':
 
   except Exception as e:
     print('%s Failed to collected mVAM data.' % item('error'))
+    print(e)
     scraperwiki.status('error', 'Failed to collect data.')

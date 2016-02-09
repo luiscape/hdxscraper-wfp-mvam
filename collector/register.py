@@ -35,7 +35,7 @@ resources = [
               { 'id': 'CnfIntvLo', 'type': 'text' },
               { 'id': 'ADM1_NAME', 'type': 'text' },
               { 'id': 'NumObs', 'type': 'text' },
-              { 'id': 'ADM0_CODE', 'type': 'text' },
+              { 'id': 'ADM0_CODE', 'type': 'int' },
               { 'id': 'PnlID', 'type': 'text' },
               { 'id': 'ID', 'type': 'text' },
               { 'id': 'StDev', 'type': 'text' },
@@ -49,7 +49,7 @@ resources = [
               { 'id': 'CnfIntvHi', 'type': 'text' }
             ]
         },
-        'indexes':['ADM0_CODE']
+        'indexes': []
     },
     {
         'resource_id': '748b40dd-7bd3-40a3-941b-e76f0bfbe0eb',
@@ -73,7 +73,7 @@ resources = [
               {'id': 'SvyYear', 'type': 'text' },
               {'id': 'Median', 'type': 'text' },
               {'id': 'NumObs', 'type': 'text' },
-              {'id': 'ADM0_CODE', 'type': 'text' },
+              {'id': 'ADM0_CODE', 'type': 'int' },
               {'id': 'PnlID', 'type': 'text' },
               {'id': 'ID', 'type': 'text' },
               {'id': 'ADM1_NAME', 'type': 'text' },
@@ -89,7 +89,7 @@ resources = [
               {'id': 'CnfIntvHi', 'type': 'text' }
             ]
         },
-        'indexes': ['ADM0_CODE']
+        'indexes': []
     }
 ]
 
@@ -111,7 +111,7 @@ def upload_data_to_datastore(ckan_resource_id, resource, apikey):
 
     reader = csv.DictReader(open(resource['path']))
     rows = [ row for row in reader ]
-    chunksize = 1000
+    chunksize = 5000
     offset = 0
     print('Uploading data for file: %s' % resource['path'])
     while offset < len(rows):
