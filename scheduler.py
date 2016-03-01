@@ -15,7 +15,7 @@ def wrapper():
   collect.main()
 
 
-schedule.every(1).day.do(wrapper)
+schedule.every(12).hours.do(wrapper)
 
 def main(verbose=True):
   '''
