@@ -94,6 +94,9 @@ resources = [
 ]
 
 def upload_data_to_datastore(ckan_resource_id, resource, apikey):
+    if apikey is None:
+      raise ValueError('No API key provided.')
+
     ckan = ckanapi.RemoteCKAN('http://data.hdx.rwlabs.org', apikey=API_KEY)
 
     try:
