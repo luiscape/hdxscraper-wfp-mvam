@@ -19,5 +19,5 @@ def store_sqlite(data, table):
   '''
   print('{bullet} Storing {n} records in database.'.format(bullet=item('bullet'), n=len(data)))
 
-  for record in data:
-    scraperwiki.sqlite.save(record.keys(), record, table_name=table)
+  # for record in data:
+  scraperwiki.sqlite.save(data[0].keys(), data, table_name=table)
